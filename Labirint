@@ -1,0 +1,37 @@
+import pygame
+pygame.init()
+win = pygame.display.set_mode((1113, 968))
+pygame.display.set_caption("Python Game")
+
+player = pygame.image.load("HEROL.png")
+bg = pygame.image.load("FONL.jpg")
+
+x = 50
+y = 50
+speed = 5
+
+clock = pygame.time.Clock()
+run = True
+while(run):
+    clock.tick(30)
+    for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+    
+    keys = pygame.key.get_pressed()
+    
+    if keys[pygame.K_LEFT]:
+        x -= speed
+    elif keys[pygame.K_RIGHT]:
+        x += speed
+    elif keys[pygame.K_UP]:
+        y -= speed
+    elif keys[pygame.K_DOWN]:
+        y += speed
+        
+    win.blit(bg, (0,0))
+    win.blit(player, (x, y))
+    pygame.display.update()
+
+                
+pygame.quit()
